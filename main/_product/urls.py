@@ -1,13 +1,7 @@
-from django.urls import path, include
-from rest_framework import routers
+from django.urls import path
 from . import views
 
-router = routers.DefaultRouter()
-router.register(r'admin', views.ProductViewSet)
-
-urlpatterns = [
-    path('', include(router.urls)),
-    path('api-auth/', include('rest_framework.urls', namespace='rest_framework'))
+urlpatterns = [ 
+    path('api/', views.products),
+    path('api/<int:pk>/', views.product_list),
 ]
-
-urlpatterns += router.urls
